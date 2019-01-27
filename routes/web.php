@@ -20,5 +20,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/campaign', 'CampaignController@index')->name('campaign');
+//Route::get('/campaign', 'CampaignController@index')->name('campaign');
+Route::resource('campaign', 'CampaignController');
+Route::resource('channel', 'ChannelController');
+Route::resource('subchannel', 'SubChannelController');
 

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Channel;
+use App\SubChannel;
+use Illuminate\Http\Request;
 
-class ChannelController extends Controller
+class SubChannelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +20,9 @@ class ChannelController extends Controller
 
     public function index()
     {
-        $channels = Channel::paginate(5);
-        return view('channel/index')
-                ->with('channels', $channels);
+        $subchannels = SubChannel::paginate(5);
+        return view('subchannel/index')
+                ->with('subchannels', $subchannels);
     }
 
     /**
@@ -31,7 +32,9 @@ class ChannelController extends Controller
      */
     public function create()
     {
-        return view('channel/create');
+        $channels = Channel::all();
+        return view('subchannel/create')
+                ->with('channels', $channels);
     }
 
     /**
@@ -42,10 +45,11 @@ class ChannelController extends Controller
      */
     public function store(Request $req)
     {
-        $channel = new Channel;
-        $channel->name = $req->input('name');
-        $channel->color = $req->input('color');
-        $channel->save();
+        $subchannel = new SubChannel;
+        $subchannel->name = $req->input('name');
+        $subchannel->color = $req->input('color');
+        $subchannel->channel_id = $req->input('chan_name');
+        $subchannel->save();
         return redirect('/channel');
     }
 
@@ -57,9 +61,9 @@ class ChannelController extends Controller
      */
     public function show($id)
     {
-        $channel = Channel::find($id);
-        return view('channel/detail')
-                ->with('channel', $channel);
+        $subchannel = SubChannel::find($id);
+        return view('subchannel/detail')
+                ->with('subchannel', $subchannel);
     }
 
     /**
@@ -70,9 +74,11 @@ class ChannelController extends Controller
      */
     public function edit($id)
     {
-        $channel = Channel::find($id);
-        return view('channel/edit')
-                ->with('channel', $channel);
+        $channels = Channel::all();
+        $subchannel = SubChannel::find($id);
+        return view('subchannel/edit')
+                ->with('subchannel', $subchannel)
+                ->with('channels', $channels);
     }
 
     /**
@@ -84,11 +90,12 @@ class ChannelController extends Controller
      */
     public function update(Request $req, $id)
     {
-        $channel = Channel::find($id);
-        $channel->name = $req->input('name');
-        $channel->color = $req->input('color');
-        $channel->save();
-        return redirect('/channel');
+        $subchannel = SubChannel::find($id);
+        $subchannel->name = $req->input('name');
+        $subchannel->color = $req->input('color');
+        $subchannel->channel_id = $req->input('chan_name');
+        $subchannel->save();
+        return redirect('/subchannel');
     }
 
     /**
@@ -99,7 +106,7 @@ class ChannelController extends Controller
      */
     public function destroy($id)
     {
-        $channel = Channel::find($id);
-        $channel->delete();
+        $subchannel = SubChannel::find($id);
+        $subchannel->delete();
     }
 }
