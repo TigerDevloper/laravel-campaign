@@ -13,7 +13,7 @@ class CreateCampaignDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('campaign_details', function (Blueprint $table) {
+        Schema::create('campaign_channels', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('campaign_id');
             $table->integer('channel_id');

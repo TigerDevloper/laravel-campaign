@@ -50,7 +50,7 @@ class SubChannelController extends Controller
         $subchannel->color = $req->input('color');
         $subchannel->channel_id = $req->input('chan_name');
         $subchannel->save();
-        return redirect('/channel');
+        return redirect('/subchannel');
     }
 
     /**

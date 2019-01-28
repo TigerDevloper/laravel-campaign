@@ -14,7 +14,7 @@
                         &nbsp; Back To List Data Channel</a></p>            
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong><i class="fa fa-glass"></i> 1</strong>
+                <strong><i class="fa fa-glass"></i> </strong>
             </div>
             <div class="panel-body" style="padding:20px 0px 0px 0px">
                 <form class="form-horizontal" method="post" id="form" enctype="multipart/form-data" action="/channel">

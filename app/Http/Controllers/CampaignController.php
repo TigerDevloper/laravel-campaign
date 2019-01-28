@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Campaign;
+use App\Channel;
+use App\SubChannel;
+use App\CampaignChannel;
 
 class CampaignController extends Controller
 {
@@ -52,7 +55,7 @@ class CampaignController extends Controller
         $campaign->sustain_start = $req->input('sustain_start');
         $campaign->sustain_end = $req->input('sustain_end');
         $campaign->save();
-        return redirect('/campaign');
+        return redirect('campaign/channel/' . $campaign->id);
 
     }
 
@@ -101,7 +104,7 @@ class CampaignController extends Controller
         $campaign->sustain_start = $req->input('sustain_start');
         $campaign->sustain_end = $req->input('sustain_end');
         $campaign->save();
-        return redirect('/campaign');
+        return redirect('campaign/channel/' . $campaign->id);
 
     }
 
@@ -115,5 +118,80 @@ class CampaignController extends Controller
     {
         $campaign = Campaign::find($id);
         $campaign->delete();
+    }
+
+    public function channel(Request $req, $campaign_id)
+    {
+
+        $channels = Channel::all();
+        $subchannels = SubChannel::all();
+        $camp_channels = CampaignChannel::where('campaign_id', $campaign_id)->get();
+        return view('campaign/addchannel')
+                ->with('campaign_id', $campaign_id)
+                ->with('channels', $channels)
+                ->with('camp_channels', $camp_channels)
+                ->with('subchannels', $subchannels);
+
+    }
+
+    public function addchannel(Request $req, $campaign_id)
+    {
+        $c = new CampaignChannel;
+        $c->campaign_id = $campaign_id;
+        $c->channel_id = $req->input('channel_id');
+        $c->chairman = $req->input('chairman');
+        $c->description = $req->input('description');
+        $c->tease_start = $req->input('tease_start');
+        $c->tease_end = $req->input('tease_end');
+        $c->live_start = $req->input('live_start');
+        $c->live_end = $req->input('live_end');
+        $c->sustain_start = $req->input('sustain_start');
+        $c->sustain_end = $req->input('sustain_end');
+
+        $c->save();
+        return redirect('campaign/channel/' . $campaign_id);
+
+    }
+
+    public function editchannel(Request $req, $camp_id, $chan_id)
+    {
+
+
+        $channels = Channel::all();
+        $subchannels = SubChannel::all();
+        $camp_channels = CampaignChannel::where('campaign_id', $camp_id)->get();
+
+        $channel = CampaignChannel::find($chan_id);
+
+
+        return view('campaign/editchannel')
+                ->with('campaign_id', $camp_id)
+                ->with('channels', $channels)
+                ->with('camp_channels', $camp_channels)
+                ->with('subchannels', $subchannels)
+                ->with('channel', $channel);
+
+    }
+
+    public function savechannel(Request $req, $camp_id, $chan_id)
+    {
+        $c = CampaignChannel::find($chan_id);
+        $c->chairman = $req->input('chairman');
+        $c->description = $req->input('description');
+        $c->tease_start = $req->input('tease_start');
+        $c->tease_end = $req->input('tease_end');
+        $c->live_start = $req->input('live_start');
+        $c->live_end = $req->input('live_end');
+        $c->sustain_start = $req->input('sustain_start');
+        $c->sustain_end = $req->input('sustain_end');
+
+        $c->save();
+        return redirect('campaign/channel/' . $camp_id);
+
+    }
+    public function deletechannel($id)
+    {
+        $channel = CampaignChannel::find($id);
+        $channel->delete();
     }
 }

@@ -69,7 +69,7 @@
             <br style="clear:both">
         </div>
         <div class="box-body table-responsive no-padding">
-        <table id="table_dashboard" class="table table-hover table-striped table-bordered">
+        <table id="table_subchannel" class="table table-hover table-striped table-bordered">
             <thead>
                 <tr class="active">
                     <th width="3%"><input type="checkbox" id="checkall"></th>

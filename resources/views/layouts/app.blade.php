@@ -3,7 +3,7 @@
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Campaign Planner') }}</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -76,7 +76,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{ url('/') }}" title="" class="logo"> {{ config('app.name', 'Laravel') }}</a>
+    <a href="{{ url('/') }}" title="" class="logo"> {{ config('app.name', 'Campaign Planner') }}</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -180,48 +180,42 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">Campaign</li>
                 <!-- Optionally, you can add icons to the links -->
 
                 <!-- <li data-id="" class=""><a url="{{ url('admin/notifications') }}/admin" class=""><i class="fa fa-dashboard"></i>
                     <span>Dashboard</span> </a>
                 </li> -->
-                <li data-id="1" class="active">
-                    <a href="{{ url('user') }}" class="">
-                        <i class="fa fa-star "></i> <span>User</span>
-                    </a>
-                </li>
-                <li data-id="1" class=" active">
-                    <a href="{{ url('campaign') }}" class="">
-                        <i class="fa fa-star "></i> <span>Campaign</span>
-                    </a>
-                </li>
-                <li data-id="1" class=" active">
-                    <a href="{{ url('channel') }}" class="">
-                        <i class="fa fa-star "></i> <span>Channel</span>
-                    </a>
-                </li>
-                <li data-id="1" class=" active">
-                    <a href="{{ url('subchannel') }}" class="">
-                        <i class="fa fa-star "></i> <span>SubChannel</span>
-                    </a>
-                </li>
-                
-
 
                 <li class="header">SUPERADMIN</li>
+                <li>
+                    <a href="{{ url('user') }}" class="">
+                        <i class="fa fa-user "></i> <span>Users</span>
+                    </a>
+                </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-key"></i> <span>Privileges Roles</span> <i class="fa fa-angle-right pull-right"></i></a>
+                    <a href="#"><i class="fa fa-flag"></i> <span>Campaigns</span> 
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
                     <ul class="treeview-menu">
-                        <li class=""><a href="{{ url('privileges/add') }}"><i class="fa fa-plus"></i>
-                                <span>Add New Privilege</span></a></li>
-                        <li class=""><a href="{{ url('admin/privileges') }}"><i class="fa fa-bars"></i>
-                                <span>List Privilege</span></a></li>
+                        <li class=""><a href="{{ url('campaign') }}"><i class="fa fa-bars"></i>
+                                <span>Campaigns</span></a></li>
+                        <!-- <li class=""><a href="{{ url('campaign_detail') }}"><i class="fa fa-bars"></i>
+                                <span>Campaign Details</span></a></li> -->
                     </ul>
                 </li>
-
-                    
-                <li class=""><a href="{{ url('admin/logs') }}"><i class="fa fa-flag"></i> <span>Log User Access</span></a></li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-key"></i> <span>Channels</span> 
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class=""><a href="{{ url('channel') }}"><i class="fa fa-bars"></i>
+                                <span>Channel</span></a></li>
+                        <li class=""><a href="{{ url('subchannel') }}"><i class="fa fa-bars"></i>
+                                <span>SubChannel</span></a></li>
+                    </ul>
+                </li>
+                
+                
                 
             </ul><!-- /.sidebar-menu -->
 
@@ -318,7 +312,7 @@
 
      $(document).ready(function(){
 
-        $(".btn-delete").click(function(){
+        $("#table_campaign .btn-delete").click(function(){
             if(confirm("Are you sure to delete the item?"))
             {
                 var id = $(this).parent().parent().parent().attr('rowid');
@@ -335,7 +329,7 @@
             }
         });
 
-        $(".btn-delete").click(function(){
+        $("#table_channel .btn-delete").click(function(){
             if(confirm("Are you sure to delete the item?"))
             {
                 var id = $(this).parent().parent().parent().attr('rowid');
@@ -352,7 +346,7 @@
             }
         });
 
-        $(".btn-delete").click(function(){
+        $("#table_subchannel .btn-delete").click(function(){
             if(confirm("Are you sure to delete the item?"))
             {
                 var id = $(this).parent().parent().parent().attr('rowid');
@@ -369,10 +363,25 @@
             }
         });
 
+        $("#table_camp_channel .btn-delete").click(function(){
+            if(confirm("Are you sure to delete the item?"))
+            {
+                var id = $(this).parent().parent().parent().attr('rowid');
+                console.log(id);
+                $.ajax({
+                    url: '/campaign/channel/delete/' + id,
+                    type: 'POST',
+                    data: { },
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+
     });
 </script>
 
 
-<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
 </body>
 </html>

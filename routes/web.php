@@ -21,7 +21,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('/campaign', 'CampaignController@index')->name('campaign');
+Route::resource('user', 'UserController');
+Route::get('campaign/channel/{id}', 'CampaignController@channel');
+Route::post('campaign/channel/add/{id}', 'CampaignController@addchannel');
+Route::get('campaign/channel/edit/{camp_id}/{chan_id}', 'CampaignController@editchannel');
+Route::post('campaign/channel/save/{camp_id}/{chan_id}', 'CampaignController@savechannel');
+Route::post('campaign/channel/delete/{id}', 'CampaignController@deletechannel');
+
 Route::resource('campaign', 'CampaignController');
+
 Route::resource('channel', 'ChannelController');
 Route::resource('subchannel', 'SubChannelController');
+
 

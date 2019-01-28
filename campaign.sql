@@ -1,6 +1,6 @@
 /*
-SQLyog Enterprise Trial - MySQL GUI v7.11 
-MySQL - 5.5.5-10.1.33-MariaDB : Database - campaign
+SQLyog Community Edition- MySQL GUI v8.05 
+MySQL - 5.5.5-10.1.37-MariaDB : Database - campaign
 *********************************************************************
 */
 
@@ -11,7 +11,7 @@ MySQL - 5.5.5-10.1.33-MariaDB : Database - campaign
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`campaign` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`campaign` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
 
 USE `campaign`;
 
@@ -31,11 +31,11 @@ CREATE TABLE `cam_messages` (
 
 /*Data for the table `cam_messages` */
 
-/*Table structure for table `campaign_details` */
+/*Table structure for table `campaign_channels` */
 
-DROP TABLE IF EXISTS `campaign_details`;
+DROP TABLE IF EXISTS `campaign_channels`;
 
-CREATE TABLE `campaign_details` (
+CREATE TABLE `campaign_channels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `campaign_id` int(11) NOT NULL,
   `channel_id` int(11) NOT NULL,
@@ -50,9 +50,11 @@ CREATE TABLE `campaign_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `campaign_details` */
+/*Data for the table `campaign_channels` */
+
+insert  into `campaign_channels`(`id`,`campaign_id`,`channel_id`,`chairman`,`description`,`tease_start`,`tease_end`,`live_start`,`live_end`,`sustain_start`,`sustain_end`,`created_at`,`updated_at`) values (2,11,11,'af','this is desdcriptioin','2019-01-16','2019-01-24','2019-01-02','2019-01-15','2019-01-25','2019-01-29','2019-01-28 05:03:07','2019-01-28 05:21:45'),(3,10,8,'aaa','f','2019-01-02','2019-01-09','2019-01-10','2019-01-23','2019-01-22','2019-01-30','2019-01-28 05:24:28','2019-01-28 05:24:28'),(4,15,8,'Jack','Messages','2019-01-14','2019-01-08','2019-01-22','2019-01-25','2019-01-27','2019-01-30','2019-01-28 05:58:22','2019-01-28 05:58:22');
 
 /*Table structure for table `campaigns` */
 
@@ -71,9 +73,11 @@ CREATE TABLE `campaigns` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `campaigns` */
+
+insert  into `campaigns`(`id`,`name`,`message`,`tease_start`,`tease_end`,`live_start`,`live_end`,`sustain_start`,`sustain_end`,`created_at`,`updated_at`) values (7,'aaaaaaaaaaaaaaaaaaaa','aaaaaaaaa','2019-01-08','2019-01-08','2019-01-30','2019-01-21','2019-01-14','2019-01-21','2019-01-26 17:00:56','2019-01-26 17:00:56'),(8,'bb','bbbbbb','2019-01-07','2019-01-09','2019-01-30','2019-01-28','2019-01-15','2019-01-15','2019-01-26 17:01:11','2019-01-26 17:01:11'),(9,'ccc','ccc','2019-01-14','2019-01-02','2019-01-30','2019-01-28','2019-01-21','2019-01-30','2019-01-26 17:01:27','2019-01-26 17:01:27'),(10,'aaaaaaaaaaaaaaaaaaaa','a','2019-01-14','2019-01-01','2019-02-05','2019-01-23','2019-01-23','2019-01-28','2019-01-26 17:01:43','2019-01-26 17:01:43'),(11,'AA','aaaaaaaaa','2018-12-31','2019-01-08','2019-01-28','2019-02-04','2019-01-28','2019-01-22','2019-01-26 17:02:01','2019-01-26 17:02:01'),(12,'asdf','g','2019-01-08','2019-01-24','2019-01-15','2019-01-30','2019-01-30','2019-01-25','2019-01-28 04:14:11','2019-01-28 04:14:11'),(13,'asdf','g','2019-01-13','2019-01-23','2018-12-31','2019-01-15','2019-01-29','2019-02-01','2019-01-28 04:14:37','2019-01-28 04:14:37'),(14,'Firefall','Good','2019-01-08','2019-01-18','2019-01-15','2019-01-31','2019-01-15','2019-01-24','2019-01-28 04:36:50','2019-01-28 04:36:50'),(15,'Festival','get ready','2019-01-01','2019-01-02','2019-01-13','2019-01-18','2019-01-21','2019-01-30','2019-01-28 05:57:50','2019-01-28 05:57:50');
 
 /*Table structure for table `cha_messages` */
 
@@ -99,13 +103,14 @@ CREATE TABLE `channels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `color` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `p_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `channels` */
+
+insert  into `channels`(`id`,`name`,`color`,`created_at`,`updated_at`) values (2,'sports','#123338','2019-01-27 09:25:13','2019-01-27 10:03:02'),(3,'web','#111118','2019-01-27 09:57:36','2019-01-27 10:03:10');
 
 /*Table structure for table `migrations` */
 
@@ -134,6 +139,24 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `password_resets` */
+
+/*Table structure for table `sub_channels` */
+
+DROP TABLE IF EXISTS `sub_channels`;
+
+CREATE TABLE `sub_channels` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `channel_id` int(10) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `sub_channels` */
+
+insert  into `sub_channels`(`id`,`name`,`color`,`channel_id`,`created_at`,`updated_at`) values (8,'soccerball','#125677',2,'2019-01-27 16:46:29','2019-01-27 09:46:29'),(9,'php','#111117',2,'2019-01-27 09:58:33','2019-01-27 09:58:33'),(11,'gsd','#723463',2,'2019-01-28 11:42:41','2019-01-28 04:42:41');
 
 /*Table structure for table `users` */
 
