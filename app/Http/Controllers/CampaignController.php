@@ -189,9 +189,25 @@ class CampaignController extends Controller
         return redirect('campaign/channel/' . $camp_id);
 
     }
+
     public function deletechannel($id)
     {
         $channel = CampaignChannel::find($id);
         $channel->delete();
+    }
+
+    public function preview($camp_id)
+    {
+        $campaign = Campaign::find($camp_id);
+        $channels = CampaignChannel::where('campaign_id', $camp_id)->get();
+        $days = [];
+        for ($i=0; $i < 31; $i++) { 
+            $days[$i] = $i + 1;
+        }
+        return view('campaign/preview')
+                ->with('campaign_id', $camp_id)
+                ->with('channels', $channels)
+                ->with('campaign', $campaign)
+                ->with('days', $days);
     }
 }

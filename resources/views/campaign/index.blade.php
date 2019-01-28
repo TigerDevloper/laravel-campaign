@@ -78,7 +78,7 @@
                 <table id="table_campaign" class="table table-hover table-striped table-bordered">
                     <thead>
                         <tr class="active">
-                            <th width="3%"><input type="checkbox" id="checkall"></th>
+                            <!-- <th width="3%"><input type="checkbox" id="checkall"></th> -->
                             <th width="auto">Name &nbsp;</th>
                             <th width="auto">Message &nbsp;</th>
                             <th width="auto">Tease Start &nbsp;</th>
@@ -93,7 +93,7 @@
                     <tbody>
                     @foreach($campaigns as $campaign)        
                         <tr rowid="{{$campaign->id}}">
-                            <td><input type="checkbox" class="checkbox" name="checkbox[]" value="1"></td>
+                            <!-- <td><input type="checkbox" class="checkbox" name="checkbox[]" value="1"></td> -->
                             <td>{{$campaign->name}}</td>
                             <td>{{$campaign->message}}</td>
                             <td>{{$campaign->tease_start}}</td>
@@ -104,7 +104,7 @@
                             <td>{{$campaign->sustain_end}}</td>
                             <td>
                                 <div class="button_action" style="text-align:right">
-                                    <a class="btn btn-xs btn-primary btn-detail" title="Detail Data" href="{{url('campaign/') . '/' . $campaign->id}}">
+                                    <a class="btn btn-xs btn-primary btn-detail" title="Detail Data" href="{{url('campaign/preview') . '/' . $campaign->id}}">
                                         <i class="fa fa-eye"></i>   
                                     </a>
                                     <a class="btn btn-xs btn-success btn-edit" title="Edit Data" href="{{url('campaign/').'/'.$campaign->id.('/edit')}}">

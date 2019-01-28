@@ -72,7 +72,7 @@
         <table id="table_channel" class="table table-hover table-striped table-bordered">
             <thead>
                 <tr class="active">
-                    <th width="3%"><input type="checkbox" id="checkall"></th>
+                    <!-- <th width="3%"><input type="checkbox" id="checkall"></th> -->
                     <th width="auto">Name &nbsp;</th>
                     <th width="auto">Color &nbsp;</th>
                     <th width="auto">Action &nbsp;</th>
@@ -81,7 +81,7 @@
                     <tbody>
                     @foreach($channels as $channel)        
                         <tr rowid="{{$channel->id}}">
-                            <td><input type="checkbox" class="checkbox" name="checkbox[]" value="1"></td>
+                            <!-- <td><input type="checkbox" class="checkbox" name="checkbox[]" value="1"></td> -->
                             <td>{{$channel->name}}</td>
                             <td>{{$channel->color}}</td>
                        		<td>

@@ -27,6 +27,7 @@ Route::post('campaign/channel/add/{id}', 'CampaignController@addchannel');
 Route::get('campaign/channel/edit/{camp_id}/{chan_id}', 'CampaignController@editchannel');
 Route::post('campaign/channel/save/{camp_id}/{chan_id}', 'CampaignController@savechannel');
 Route::post('campaign/channel/delete/{id}', 'CampaignController@deletechannel');
+Route::get('campaign/preview/{id}', 'CampaignController@preview');
 
 Route::resource('campaign', 'CampaignController');
 

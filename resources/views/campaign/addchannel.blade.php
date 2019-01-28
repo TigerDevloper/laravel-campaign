@@ -155,7 +155,7 @@
 		                <div class="form-group">
 		                    <label class="control-label col-sm-2"></label>
 		                    <div class="col-sm-10">                                              
-		                    <input type="button" value="Preview" class="btn btn-success">
+		                    <a href="/campaign/preview/{{$campaign_id}}" class="btn btn-success">Preview</a>
 		                    <input type="submit" name="submit" value="Add" class="btn btn-success">                               
 		                	</div>
 		                </div>

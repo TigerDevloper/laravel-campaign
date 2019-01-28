@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/vendor/crudbooster/assets/css/main.css?r=1548529492">
 
     <!-- load css -->
-    <style type="text/css"></style>
+    <link rel="stylesheet" href="/css/app.css">
     
     <style type="text/css">
         .dropdown-menu-action {
@@ -130,10 +130,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{ url('admin/users/profile') }}" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Profile</a>
+                                <a href="{{ url('user/profile') }}" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a title="Lock Screen" href="{{ url('admin/lock-screen') }}" class="btn btn-default btn-flat"><i class="fa fa-key"></i></a>
+                                
                                 
                                 <a href="javascript:void(0)" onclick="swal({
                                         title: 'Do you want to logout ?',
@@ -145,8 +145,9 @@
                                         cancelButtonText: 'Cancel',
                                         closeOnConfirm: false
                                         }, function(){document.getElementById('logout-form').submit();});" logout="" class="btn btn-danger btn-flat"><i class="fa fa-power-off"></i></a>
-                                <form id="logout-form" action="{{ url('admin/logout') }}" method="POST" style="display: none;">
-                                        <input type="hidden" name="_token" value="4zbADOJy4S0D4s8KqZW6qm73yukM0XpNC5PYeYse">                                    </form> 
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                </form> 
                             </div>
                         </li>
                     </ul>
