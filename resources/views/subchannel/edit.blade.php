@@ -12,7 +12,7 @@
 <section id="content_section" class="content">            
     <div>
 		<p><a title="Return" href="{{url('/subchannel')}}"><i class="fa fa-chevron-circle-left "></i>
-                        &nbsp; Back To List Data SubChannel</a></p>            
+                        &nbsp; Back To List SubChannel</a></p>            
         <div class="panel panel-default">
             <div class="panel-heading">
                 <strong><i class="fa fa-glass"></i> </strong>

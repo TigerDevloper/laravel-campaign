@@ -188,30 +188,33 @@
                 </li> -->
 
                 <li class="header">SUPERADMIN</li>
-                <li>
+                <li class=" {{str_contains(URL::current(), 'user') ? 'active' : ''}}">
                     <a href="{{ url('user') }}" class="">
                         <i class="fa fa-user "></i> <span>Users</span>
                     </a>
                 </li>
-                <li class="treeview">
+                <li class="treeview {{str_contains(URL::current(), 'campaign') ? 'active' : ''}}">
                     <a href="#"><i class="fa fa-flag"></i> <span>Campaigns</span> 
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class=""><a href="{{ url('campaign') }}"><i class="fa fa-bars"></i>
+                        <li class="{{str_contains(URL::current(), 'campaign') ? 'active' : ''}}">
+                            <a href="{{ url('campaign') }}"><i class="fa fa-bars"></i>
                                 <span>Campaigns</span></a></li>
                         <!-- <li class=""><a href="{{ url('campaign_detail') }}"><i class="fa fa-bars"></i>
                                 <span>Campaign Details</span></a></li> -->
                     </ul>
                 </li>
-                <li class="treeview">
+                <li class="treeview {{str_contains(URL::current(), 'channel') ? 'active' : ''}}">
                     <a href="#"><i class="fa fa-key"></i> <span>Channels</span> 
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class=""><a href="{{ url('channel') }}"><i class="fa fa-bars"></i>
+                        <li class="{{str_contains(URL::current(), '/channel') ? 'active' : ''}}">
+                            <a href="{{ url('channel') }}"><i class="fa fa-bars"></i>
                                 <span>Channel</span></a></li>
-                        <li class=""><a href="{{ url('subchannel') }}"><i class="fa fa-bars"></i>
+                        <li class="{{str_contains(URL::current(), 'subchannel') ? 'active' : ''}}">
+                            <a href="{{ url('subchannel') }}"><i class="fa fa-bars"></i>
                                 <span>SubChannel</span></a></li>
                     </ul>
                 </li>
@@ -254,7 +257,7 @@
 
 <!-- jQuery 2.1.3 -->
 <script src="/vendor/crudbooster/assets/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-
+@yield('js_section')
 <!-- Bootstrap 3.3.2 JS -->
 <script src="/vendor/crudbooster/assets/adminlte/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- AdminLTE App -->
@@ -311,76 +314,6 @@
 
     });
 
-     $(document).ready(function(){
-
-        $("#table_campaign .btn-delete").click(function(){
-            if(confirm("Are you sure to delete the item?"))
-            {
-                var id = $(this).parent().parent().parent().attr('rowid');
-                console.log(id);
-                $.ajax({
-                    url: '/campaign/' + id,
-                    type: 'POST',
-                    data: { _method : 'DELETE'
-                    },
-                    success: function(response) {
-                        window.location.reload();
-                    }
-                });
-            }
-        });
-
-        $("#table_channel .btn-delete").click(function(){
-            if(confirm("Are you sure to delete the item?"))
-            {
-                var id = $(this).parent().parent().parent().attr('rowid');
-                console.log(id);
-                $.ajax({
-                    url: '/channel/' + id,
-                    type: 'POST',
-                    data: { _method : 'DELETE'
-                    },
-                    success: function(response) {
-                        window.location.reload();
-                    }
-                });
-            }
-        });
-
-        $("#table_subchannel .btn-delete").click(function(){
-            if(confirm("Are you sure to delete the item?"))
-            {
-                var id = $(this).parent().parent().parent().attr('rowid');
-                console.log(id);
-                $.ajax({
-                    url: '/subchannel/' + id,
-                    type: 'POST',
-                    data: { _method : 'DELETE'
-                    },
-                    success: function(response) {
-                        window.location.reload();
-                    }
-                });
-            }
-        });
-
-        $("#table_camp_channel .btn-delete").click(function(){
-            if(confirm("Are you sure to delete the item?"))
-            {
-                var id = $(this).parent().parent().parent().attr('rowid');
-                console.log(id);
-                $.ajax({
-                    url: '/campaign/channel/delete/' + id,
-                    type: 'POST',
-                    data: { },
-                    success: function(response) {
-                        window.location.reload();
-                    }
-                });
-            }
-        });
-
-    });
 </script>
 
 

@@ -11,7 +11,7 @@
 <section id="content_section" class="content">            
     <div>
 		<p><a title="Return" href="{{url('/campaign')}}"><i class="fa fa-chevron-circle-left "></i>
-                        &nbsp; Back To List Data Campaign</a></p> 
+                        &nbsp; Back To List Campaign</a></p> 
         <div class="panel panel-default">
             <div class="panel-heading">
                 <strong><i class="fa fa-glass"></i> </strong>

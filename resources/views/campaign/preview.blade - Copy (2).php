@@ -11,7 +11,7 @@
 <section id="content_section" class="content">            
     <div>
 		<p><a title="Return" href="{{url('/campaign')}}"><i class="fa fa-chevron-circle-left "></i>
-                        &nbsp; Back To List Campaign</a></p> 
+                        &nbsp; Back To List Data Campaign</a></p> 
         <div class="panel panel-default">
             <div class="panel-heading">
                 <strong><i class="fa fa-glass"></i> </strong>
@@ -96,20 +96,19 @@
                             @if($campaign_t_start - 1 > 0)
                             <th width="auto" colspan="{{$campaign_t_start - 1}}"></th>
                             @endif
-                            <th width="auto" colspan="{{$campaign_t_end - $campaign_t_start + 1}}" style="background: #ffa64d;">Tease</th>
+                            <th width="auto" colspan="{{$campaign_t_end - $campaign_t_start + 1}}" style="background: #ffaa55;">Tease</th>
 
                             @if($campaign_l_start - $campaign_t_end - 1 > 0)
                             <th width="auto" colspan="{{$campaign_l_start - $campaign_t_end - 1}}"></th>
                             @endif
 
-                            <th width="auto" colspan="{{$campaign_l_end - $campaign_l_start + 1}}" style="background: #ffff66;">Live</th>
+                            <th width="auto" colspan="{{$campaign_l_end - $campaign_l_start + 1}}" style="background: #eeee55;">Live</th>
 
                             @if($campaign_s_start - $campaign_l_end - 1> 0)
                             <th width="auto" colspan="{{$campaign_s_start - $campaign_l_end - 1}}"></th>
                             @endif
 
-                            <th width="auto" colspan="{{$campaign_s_end - $campaign_s_start + 1}}" style="background:
-                            #39ac39;">Sustain</th>
+                            <th width="auto" colspan="{{$campaign_s_end - $campaign_s_start + 1}}" style="background: #60aa88;">Sustain</th>
 
                             @if(31 - $campaign_s_end + 1 > 0)
                             <th width="auto" colspan="{{31 - $campaign_s_end + 1}}"></th>
@@ -129,10 +128,10 @@
 
                         <tr class="active">
 
-                            <th class="row-header">Channels</th>
-                            <th class="row-header">Responsible</th>
-                            <th class="row-header" style="background-color: #8c8c8c;">Core Message</th>
-                        	<th colspan="31" style="background: #ffffff;"></th>
+                            <th width="auto" class="row-header">Channels &nbsp;</th>
+                            <th width="auto" class="row-header">Responsible &nbsp;</th>
+                            <th width="auto" class="row-header">Core Message &nbsp;</th>
+                        	<th width="auto" colspan="31" style="background: #ffffff;"></th>
                             
                         </tr>
                     </thead>
@@ -144,35 +143,16 @@
                             <td>{{$ch->chairman}}</td>
                             <td>{{$ch->description}}</td>
                             @foreach($days as $d)
-                                @if($ch->stage == 1)
-                                    @if($d >= $campaign_t_start && $d <= $campaign_t_end)
-                                    <th width="auto" style="background: {{$ch->channel->color}};"></th>
-                                    @else
-                                    <th width="auto"></th>
-                                    @endif
-                                @endif
-                                @if($ch->stage == 2)
-                                    @if($d >= $campaign_l_start && $d <= $campaign_l_end)
-                                    <th width="auto" style="background: {{$ch->channel->color}};"></th>
-                                    @else
-                                    <th width="auto"></th>
-                                    @endif
-                                @endif
-                                @if($ch->stage == 3)
-                                    @if($d >= $campaign_s_start && $d <= $campaign_s_end)
-                                    <th width="auto" style="background: {{$ch->channel->color}};"></th>
-                                    @else
-                                    <th width="auto"></th>
-                                    @endif
-                                @endif
-                                @if($ch->stage == 4)
-                                    @if($d >= $campaign_t_start && $d <= $campaign_s_end)
-                                    <th width="auto" style="background: {{$ch->channel->color}};"></th>
-                                    @else
-                                    <th width="auto"></th>
-                                    @endif
-                                @endif
-                            	
+
+                            	@if($d >= $t_start && $d <= $t_end)
+                            	<th width="auto" style="background: {{$ch->channel->color}};"></th>
+                            	@elseif($d >= $l_start && $d <= $l_end)
+                            	<th width="auto" style="background: {{$ch->channel->color}};"></th>
+                            	@elseif($d >= $s_start && $d <= $s_end)
+                            	<th width="auto" style="background: {{$ch->channel->color}};"></th>
+                            	@else
+                            	<th width="auto"></th>
+                            	@endif
                             @endforeach 
                             
                         </tr>

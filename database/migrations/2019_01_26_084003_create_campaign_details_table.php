@@ -19,12 +19,7 @@ class CreateCampaignDetailsTable extends Migration
             $table->integer('channel_id');
             $table->string('chairman');
             $table->string('description');
-            $table->date('tease_start');
-            $table->date('tease_end');
-            $table->date('live_start');
-            $table->date('live_end');
-            $table->date('sustain_start');
-            $table->date('sustain_end');
+            $table->integer('stage');
             $table->timestamps();
         });
     }

@@ -29,9 +29,12 @@ Route::post('campaign/channel/save/{camp_id}/{chan_id}', 'CampaignController@sav
 Route::post('campaign/channel/delete/{id}', 'CampaignController@deletechannel');
 Route::get('campaign/preview/{id}', 'CampaignController@preview');
 
+Route::get('campaign/channel/assign/{ch_id}', 'CampaignController@assign');
+
 Route::resource('campaign', 'CampaignController');
 
 Route::resource('channel', 'ChannelController');
 Route::resource('subchannel', 'SubChannelController');
+Route::resource('user', 'UserController');
 
 

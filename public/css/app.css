@@ -9,6 +9,10 @@
 	border: 1px solid black;
 }
 
+.preview_table tr th.row-header {
+	background-color: #8c8c8c;
+}
+
 /*.preview_table th.row-header {
 	background: #11aa22;
 	color: white;

@@ -29,30 +29,7 @@
 						                <td>Message</td>
 						                <td>{{$campaign->message}}</td>
 						            </tr>
-     								<tr>
-					                    <td>Tease Start</td>
-					                    <td>{{$campaign->tease_start}}</td>
-						            </tr>
-    								<tr>
-					                    <td>Tease End</td>
-					                    <td>{{$campaign->tease_end}}</td>
-                					</tr>
-        							<tr>
-					                    <td>Live Start</td>
-					                    <td>{{$campaign->live_start}}</td>
-                					</tr>
-                    				<tr>
-        								<td>Live End</td>
-					                    <td>{{$campaign->live_end}}</td>
-					               	</tr>
-									<tr>
-					                    <td>Sustain Start</td>
-					                    <td>{{$campaign->sustain_start}}</td>
-					                </tr>
-                    				<tr>
-					                    <td>Sustain End</td>
-					                    <td>{{$campaign->sustain_end}}</td>
-                					</tr>    
+     								   
     							</tbody>
     						</table>
 						</div>                                            

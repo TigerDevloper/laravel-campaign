@@ -1,0 +1,51 @@
+When I want to add a channel, I should be able to indicate stage of campaign Tease, Live, Sustain or ALL
+
+I should also be able to automatically pull the channele's message from the one that I have defined in row 30 to 34 or create my own.
+
+When Defining campaign. You can always go back and add more sub messages to a campaign.
+Need to add stage to be used Tease, Live, Sustain or ALL
+I can remove all colour coding and keep everything just white.
+
+Exporting and Filtering  is very import for app - I should be able to switch view to what is in Sheet 2 - Same content but filtered and presented differently. 
+
+So I can filter the spreadsheet by Channel (See Sheet 1) or by Message (See Sheet 2)
+
+
+You mean, when adding sub messages to a campaign, you should define its stage to be used as well?   = Yes = Tease, Live, Sustain or ALL
+
+Where can you remove all color coding?   = Make everything I export in Excel plain white - Orange, Blue, Purple e.tc
+
+Are you okay with the page layout?  >> This is the most important part of the app, needs to flow and be super easy to use - Please see this https://freedcamp.com/register/account_settings
+
+And what is message guide? >> After you enter Message. Message guide is optional, just to add more information about what is happening at this stage
+
+
+
+Campaign Channels
+
+Onsite
+Slider
+Strip Banner
+Brand Floor
+Landing Page
+Countdown
+Pop-Up
+
+
+CRM
+Newsletters
+Push Notification (NL)
+SMS
+IN-APP
+Web Push
+
+Affiliation
+Intercom
+Banners
+Whatsapp
+
+POM
+Facebook 
+Twitter
+Instagram
+Remarketing

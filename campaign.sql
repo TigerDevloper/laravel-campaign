@@ -1,6 +1,6 @@
 /*
-SQLyog Enterprise Trial - MySQL GUI v7.11 
-MySQL - 5.5.5-10.1.33-MariaDB : Database - campaign
+SQLyog Community Edition- MySQL GUI v8.05 
+MySQL - 5.5.5-10.1.37-MariaDB : Database - campaign
 *********************************************************************
 */
 
@@ -39,22 +39,18 @@ CREATE TABLE `campaign_channels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `campaign_id` int(11) NOT NULL,
   `channel_id` int(11) NOT NULL,
+  `subchannel_id` int(11) NOT NULL,
   `chairman` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tease_start` date NOT NULL,
-  `tease_end` date NOT NULL,
-  `live_start` date NOT NULL,
-  `live_end` date NOT NULL,
-  `sustain_start` date NOT NULL,
-  `sustain_end` date NOT NULL,
+  `stage` int(10) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `campaign_channels` */
 
-insert  into `campaign_channels`(`id`,`campaign_id`,`channel_id`,`chairman`,`description`,`tease_start`,`tease_end`,`live_start`,`live_end`,`sustain_start`,`sustain_end`,`created_at`,`updated_at`) values (2,11,11,'af','this is desdcriptioin','2019-01-14','2019-01-16','2019-01-17','2019-01-19','2019-01-25','2019-01-27','2019-01-28 05:03:07','2019-01-28 11:58:53'),(5,11,8,'good','greate','2019-01-09','2019-01-07','2019-01-09','2019-01-14','2019-01-24','2019-01-30','2019-01-28 11:41:21','2019-01-28 11:41:21'),(6,16,9,'Stan','This message is come from','2019-01-01','2019-01-08','2019-01-09','2019-01-09','2019-01-10','2019-01-31','2019-01-28 13:43:37','2019-01-28 13:43:37'),(7,16,11,'Stan','This message is come from','2019-01-01','2019-01-03','2019-01-10','2019-01-10','2019-01-21','2019-01-29','2019-01-28 13:43:59','2019-01-28 13:43:59');
+insert  into `campaign_channels`(`id`,`campaign_id`,`channel_id`,`subchannel_id`,`chairman`,`description`,`stage`,`created_at`,`updated_at`) values (2,11,2,11,'af','this is desdcriptioin',4,'2019-01-28 05:03:07','2019-01-28 11:58:53'),(5,11,2,8,'good','greate',2,'2019-01-28 11:41:21','2019-01-28 11:41:21'),(6,16,2,9,'Stan','This message is come from',2,'2019-01-28 13:43:37','2019-01-28 13:43:37'),(7,16,2,11,'Stan','This message is come from',3,'2019-01-28 13:43:59','2019-01-28 13:43:59'),(8,11,2,8,'ccc','this is desdcriptioin',1,'2019-01-28 18:52:47','2019-01-28 18:52:47'),(9,19,2,8,'aaa','aaaa',1,'2019-01-29 06:53:05','2019-01-29 06:53:05'),(10,21,2,8,'ccccc','cccccccccccccc',3,'2019-01-29 09:21:11','2019-01-29 09:21:11'),(11,22,3,7,'aaaaaaaaa','aaaaaaaaaaaaaaaa',3,'2019-01-29 09:42:58','2019-01-29 09:42:58');
 
 /*Table structure for table `campaigns` */
 
@@ -73,11 +69,11 @@ CREATE TABLE `campaigns` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `campaigns` */
 
-insert  into `campaigns`(`id`,`name`,`message`,`tease_start`,`tease_end`,`live_start`,`live_end`,`sustain_start`,`sustain_end`,`created_at`,`updated_at`) values (11,'TESTING','TESTING WORKS','2019-01-01','2019-01-15','2019-01-16','2019-01-24','2019-01-25','2019-01-31','2019-01-26 17:02:01','2019-01-26 17:02:01'),(14,'Firefall','Good','2019-01-01','2019-01-10','2019-01-11','2019-01-20','2019-01-21','2019-01-31','2019-01-28 04:36:50','2019-01-28 04:36:50'),(15,'Festival','get ready','2019-01-01','2019-01-15','2019-01-16','2019-01-20','2019-01-21','2019-01-31','2019-01-28 05:57:50','2019-01-28 05:57:50'),(16,'Demo Campaign','The world is mine','2019-01-01','2019-01-08','2019-01-09','2019-01-09','2019-01-10','2019-01-31','2019-01-28 13:40:14','2019-01-28 13:40:14');
+insert  into `campaigns`(`id`,`name`,`message`,`tease_start`,`tease_end`,`live_start`,`live_end`,`sustain_start`,`sustain_end`,`created_at`,`updated_at`) values (11,'TESTING','TESTING WORKS','2019-01-01','2019-01-15','2019-01-16','2019-01-24','2019-01-25','2019-01-31','2019-01-26 17:02:01','2019-01-26 17:02:01'),(16,'Demo Campaign','The world is mine','2019-01-01','2019-01-08','2019-01-09','2019-01-09','2019-01-10','2019-01-31','2019-01-28 13:40:14','2019-01-28 13:40:14'),(17,'subadmin','Good','2019-01-08','2019-01-11','2019-01-12','2019-01-23','2019-01-24','2019-01-31','2019-01-29 03:07:17','2019-01-29 03:07:17'),(19,'aaa','aaaa','2019-01-01','2019-01-09','2019-01-29','2019-01-24','2019-01-21','2019-02-06','2019-01-29 05:50:00','2019-01-29 05:50:00'),(20,'bb','bbbb','2019-01-09','2019-01-17','2019-01-24','2019-01-23','2019-01-28','2019-01-30','2019-01-29 09:19:28','2019-01-29 09:19:28'),(21,'bb','bbbb','2019-01-09','2019-01-17','2019-01-24','2019-01-23','2019-01-28','2019-01-30','2019-01-29 09:20:29','2019-01-29 09:20:29'),(22,'vv','vvvv','2019-01-09','2019-01-16','2019-01-22','2019-01-25','2019-01-28','2019-02-01','2019-01-29 09:42:30','2019-01-29 09:42:30');
 
 /*Table structure for table `cha_messages` */
 
@@ -110,7 +106,7 @@ CREATE TABLE `channels` (
 
 /*Data for the table `channels` */
 
-insert  into `channels`(`id`,`name`,`color`,`created_at`,`updated_at`) values (2,'Front End','#123338','2019-01-27 09:25:13','2019-01-27 10:03:02'),(3,'Back End','#111118','2019-01-27 09:57:36','2019-01-27 10:03:10');
+insert  into `channels`(`id`,`name`,`color`,`created_at`,`updated_at`) values (2,'Front End','#b3d9ff','2019-01-27 09:25:13','2019-01-27 10:03:02'),(3,'Back End','#4dffff','2019-01-27 09:57:36','2019-01-27 10:03:10');
 
 /*Table structure for table `migrations` */
 
@@ -156,7 +152,7 @@ CREATE TABLE `sub_channels` (
 
 /*Data for the table `sub_channels` */
 
-insert  into `sub_channels`(`id`,`name`,`color`,`channel_id`,`created_at`,`updated_at`) values (8,'Angular','#125677',2,'2019-01-28 20:18:06','2019-01-27 09:46:29'),(9,'React','#111117',2,'2019-01-28 20:18:08','2019-01-27 09:58:33'),(11,'Vue','#723463',2,'2019-01-28 20:18:11','2019-01-28 04:42:41');
+insert  into `sub_channels`(`id`,`name`,`color`,`channel_id`,`created_at`,`updated_at`) values (7,'django','#129084',3,'2019-01-29 12:11:39','2019-01-27 09:58:33'),(8,'Angular','#125677',2,'2019-01-28 20:18:06','2019-01-27 09:46:29'),(9,'React','#111117',2,'2019-01-28 20:18:08','2019-01-27 09:58:33'),(10,'PHP','#234523',3,'2019-01-29 01:55:31','2019-01-28 04:42:41'),(11,'Vue','#723463',2,'2019-01-28 20:18:11','2019-01-28 04:42:41');
 
 /*Table structure for table `users` */
 
@@ -173,11 +169,11 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'admin','admin@gmail.com',NULL,'$2y$10$G3Rhh2GQb0PXmQaHwIfxMu9gx6GLVovsFcMhO/HFgTb23sUlF.9xC','6EP9iNsSNgLmzPNoJL67TPzbAtI2oV2tcuRq4mHMIoFvhVEghEZeytpqpoaf',NULL,NULL);
+insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values (4,'admin','admin@gmail.com',NULL,'$2y$10$Kcw3orbGrelAL9kRfpJ/U.qUclQJzof1v.Z/ImLilUC6TUVrLaKG2',NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -3,17 +3,17 @@
 @section('content')
 
 <section class="content-header">
-    <h1><i class="fa fa-glass"></i> Detail Channel &nbsp;&nbsp;</h1>
+    <h1><i class="fa fa-glass"></i> Detail User &nbsp;&nbsp;</h1>
     <ol class="breadcrumb">
-        <li><a href="{{url('channel')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Channel</li>
+        <li><a href="{{url('user')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">User</li>
     </ol>
 </section>
 
 <section id="content_section" class="content">
     <div>
-		<p><a title="Return" href="{{url('channel')}}"><i class="fa fa-chevron-circle-left "></i>
-                        &nbsp; Back To List Channel</a></p>            
+		<p><a title="Return" href="{{url('user')}}"><i class="fa fa-chevron-circle-left "></i>
+                        &nbsp; Back To List User</a></p>            
         <div class="panel panel-default">
             <div class="panel-heading">
                 <strong><i class="fa fa-glass"></i> </strong>
@@ -25,11 +25,11 @@
                                 <tbody>
                                 	<tr>
                     					<td>Name</td>
-                    					<td>{{$channel->name}}</td>
+                    					<td>{{$user->name}}</td>
                 					</tr>
 									<tr>
-						                <td>Color</td>
-						                <td>{{$channel->color}}</td>
+						                <td>Email</td>
+						                <td>{{$user->email}}</td>
 						            </tr>
 					           	</tbody>
 			           		</table>

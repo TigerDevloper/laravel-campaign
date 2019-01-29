@@ -139,14 +139,10 @@ class CampaignController extends Controller
         $c = new CampaignChannel;
         $c->campaign_id = $campaign_id;
         $c->channel_id = $req->input('channel_id');
+        $c->subchannel_id = $req->input('subchannel_id');
         $c->chairman = $req->input('chairman');
         $c->description = $req->input('description');
-        $c->tease_start = $req->input('tease_start');
-        $c->tease_end = $req->input('tease_end');
-        $c->live_start = $req->input('live_start');
-        $c->live_end = $req->input('live_end');
-        $c->sustain_start = $req->input('sustain_start');
-        $c->sustain_end = $req->input('sustain_end');
+        $c->stage = $req->input('stage');
 
         $c->save();
         return redirect('campaign/channel/' . $campaign_id);
@@ -155,8 +151,6 @@ class CampaignController extends Controller
 
     public function editchannel(Request $req, $camp_id, $chan_id)
     {
-
-
         $channels = Channel::all();
         $subchannels = SubChannel::all();
         $camp_channels = CampaignChannel::where('campaign_id', $camp_id)->get();
@@ -209,5 +203,16 @@ class CampaignController extends Controller
                 ->with('channels', $channels)
                 ->with('campaign', $campaign)
                 ->with('days', $days);
+    }
+
+    public function assign($ch_id)
+    {
+        $subchannels = SubChannel::where('channel_id', $ch_id)->get();
+        /*$name = array();
+        foreach ($subchannels as $subchannel) {
+            $name = $subchannel->name;
+        }*/
+        //var_dump($name);
+        echo json_encode($subchannels);
     }
 }

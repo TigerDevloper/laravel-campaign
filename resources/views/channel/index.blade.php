@@ -10,7 +10,7 @@
         </a> -->
         
         <a href="{{ url('channel/create') }}" id="btn_add_new_data" class="btn btn-sm btn-success" title="Add Data">
-            <i class="fa fa-plus-circle"></i> Add Data
+            <i class="fa fa-plus-circle"></i> Add Channel
         </a>
 
         <!--ADD ACTION-->
@@ -18,7 +18,7 @@
         </h1>
 
         <ol class="breadcrumb">
-            <li><a href="{{ asset('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="{{ url('/channel') }}"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Channels</li>
         </ol>
     </section>
@@ -69,15 +69,16 @@
             <br style="clear:both">
         </div>
         <div class="box-body table-responsive no-padding">
-        <table id="table_channel" class="table table-hover table-striped table-bordered">
-            <thead>
-                <tr class="active">
-                    <!-- <th width="3%"><input type="checkbox" id="checkall"></th> -->
-                    <th width="auto">Name &nbsp;</th>
-                    <th width="auto">Color &nbsp;</th>
-                    <th width="auto">Action &nbsp;</th>
-              	</tr>
-            </thead>
+            <div style="margin: 30px;">
+                <table id="table_channel" class="table table-hover table-striped table-bordered" style="text-align: center;">
+                    <thead>
+                        <tr class="active">
+                            <!-- <th width="3%"><input type="checkbox" id="checkall"></th> -->
+                            <th>Name</th>
+                            <th>Color</th>
+                            <th>Action</th>
+                      	</tr>
+                    </thead>
                     <tbody>
                     @foreach($channels as $channel)        
                         <tr rowid="{{$channel->id}}">
@@ -85,7 +86,7 @@
                             <td>{{$channel->name}}</td>
                             <td>{{$channel->color}}</td>
                        		<td>
-                                <div class="button_action" style="text-align:right">
+                                <div class="button_action">
                                     <a class="btn btn-xs btn-primary btn-detail" title="Detail Data" href="{{url('channel/') . '/' . $channel->id}}">
                                         <i class="fa fa-eye"></i>   
                                     </a>
@@ -100,13 +101,37 @@
                             </td>
                         </tr>
                     @endforeach
-                    </tbody>
-                    
+                    </tbody>   
                 </table>
+            </div>
             <div class="col-md-8"></div>
             <div class="col-md-4" style="margin:30px 0;">
                 <span class="pull-right"><?php echo $channels->links(); ?></span></div>
             </div>
         </div>
     </section>
+@endsection
+
+@section('js_section')
+<script type="text/javascript">
+    $(document).ready(function(){
+         $("#table_channel .btn-delete").click(function(){
+            if(confirm("Are you sure to delete the item?"))
+            {
+                var id = $(this).parent().parent().parent().attr('rowid');
+                console.log(id);
+                $.ajax({
+                    url: '/channel/' + id,
+                    type: 'POST',
+                    data: { _method : 'DELETE'
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    });
+   
+</script>
 @endsection

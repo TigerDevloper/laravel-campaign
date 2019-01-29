@@ -10,7 +10,7 @@
         </a> -->
         
         <a href="{{ url('subchannel/create') }}" id="btn_add_new_data" class="btn btn-sm btn-success" title="Add Data">
-            <i class="fa fa-plus-circle"></i> Add Data
+            <i class="fa fa-plus-circle"></i> Add SubChannel
         </a>
 
         <!--ADD ACTION-->
@@ -69,14 +69,15 @@
             <br style="clear:both">
         </div>
         <div class="box-body table-responsive no-padding">
-        <table id="table_subchannel" class="table table-hover table-striped table-bordered">
+        <div style="margin: 30px;">
+        <table id="table_subchannel" class="table table-hover table-striped table-bordered" style="text-align: center;">
             <thead>
                 <tr class="active">
                     <!-- <th width="3%"><input type="checkbox" id="checkall"></th> -->
-                    <th width="auto">Name &nbsp;</th>
-                    <th width="auto">Color &nbsp;</th>
-                    <th width="auto">Channel Name &nbsp;</th>
-                    <th width="auto">Action &nbsp;</th>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th>Channel Name</th>
+                    <th>Action</th>
               	</tr>
             </thead>
                     <tbody>
@@ -87,7 +88,7 @@
                             <td>{{$subchannel->color}}</td>
                             <td>{{$subchannel->channel->name}}</td>
                        		<td>
-                                <div class="button_action" style="text-align:right">
+                                <div class="button_action">
                                     <a class="btn btn-xs btn-primary btn-detail" title="Detail Data" href="{{url('subchannel/') . '/' . $subchannel->id}}">
                                         <i class="fa fa-eye"></i>   
                                     </a>
@@ -105,10 +106,35 @@
                     </tbody>
                     
                 </table>
+            </div>
             <div class="col-md-8"></div>
             <div class="col-md-4" style="margin:30px 0;">
                 <span class="pull-right"><?php echo $subchannels->links(); ?></span></div>
             </div>
         </div>
     </section>
+@endsection
+
+@section('js_section')
+<script type="text/javascript">
+    $(document).ready(function(){
+         $("#table_subchannel .btn-delete").click(function(){
+            if(confirm("Are you sure to delete the item?"))
+            {
+                var id = $(this).parent().parent().parent().attr('rowid');
+                console.log(id);
+                $.ajax({
+                    url: '/subchannel/' + id,
+                    type: 'POST',
+                    data: { _method : 'DELETE'
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    });
+   
+</script>
 @endsection

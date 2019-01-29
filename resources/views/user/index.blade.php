@@ -1,30 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1>
-        <i class="fa fa-star"></i> Campaigns &nbsp;&nbsp;
+<section class="content-header">
+    <h1>
+    <i class="fa fa-star"></i> Users &nbsp;&nbsp;
 
-        <!--START BUTTON -->
-        <!-- <a href="{{ url('campaign?') }}" id="btn_show_data" class="btn btn-sm btn-primary" title="Show Data"><i class="fa fa-table"></i> Show Data
-        </a> -->
-        
-        <a href="{{ url('campaign/create') }}" id="btn_add_new_data" class="btn btn-sm btn-success" title="Add Data">
-            <i class="fa fa-plus-circle"></i> Add Campaign
-        </a>
+    <!--START BUTTON -->
+    <!-- <a href="{{ url('campaign?') }}" id="btn_show_data" class="btn btn-sm btn-primary" title="Show Data"><i class="fa fa-table"></i> Show Data
+    </a> -->
+    
+<!--     <a href="{{ url('user/create') }}" id="btn_add_new_data" class="btn btn-sm btn-success" title="Add Data">
+        <i class="fa fa-plus-circle"></i> Add User
+    </a>
+ -->
+    <!--ADD ACTION-->
+    <!-- END BUTTON -->
+    </h1>
 
-        <!--ADD ACTION-->
-        <!-- END BUTTON -->
-        </h1>
-
-        <ol class="breadcrumb">
-            <li><a href="{{ asset('campaign') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Campaigns</li>
-        </ol>
-    </section>
-
-
-    <section id="content_section" class="content">
+    <ol class="breadcrumb">
+        <li><a href="{{ url('user') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Users</li>
+    </ol>
+</section>
+<section id="content_section" class="content">
     <!-- Your Page Content Here -->
     <div class="box">
         <div class="box-header">
@@ -70,40 +68,28 @@
             <br style="clear:both">
         </div>
         <div class="box-body table-responsive no-padding">
-            <div style="margin: 30px;">
-                <table id="table_campaign" class="table table-hover table-striped table-bordered" style="text-align: center;">
+        <div style="margin: 30px;">
+                <table id="table_user" class="table table-hover table-striped table-bordered" style="text-align: center;">
                     <thead>
-                        <tr>
+                        <tr class="active">
                             <!-- <th width="3%"><input type="checkbox" id="checkall"></th> -->
                             <th>Name</th>
-                            <th>Message</th>
-                            <th>Tease Start</th>
-                            <th>Tease End</th>
-                            <th>Live Start</th>
-                            <th>Live End</th>
-                            <th>Sustain Start</th>
-                            <th>Sustain End</th>
+                            <th>Email</th>
                             <th>Action</th>
-                        </tr>
+                      	</tr>
                     </thead>
                     <tbody>
-                    @foreach($campaigns as $campaign)        
-                        <tr rowid="{{$campaign->id}}">
+                    @foreach($users as $user)        
+                        <tr rowid="{{$user->id}}">
                             <!-- <td><input type="checkbox" class="checkbox" name="checkbox[]" value="1"></td> -->
-                            <td>{{$campaign->name}}</td>
-                            <td>{{$campaign->message}}</td>
-                            <td>{{$campaign->tease_start}}</td>
-                            <td>{{$campaign->tease_end}}</td>
-                            <td>{{$campaign->live_start}}</td>
-                            <td>{{$campaign->live_end}}</td>
-                            <td>{{$campaign->sustain_start}}</td>
-                            <td>{{$campaign->sustain_end}}</td>
-                            <td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                       		<td>
                                 <div class="button_action">
-                                    <a class="btn btn-xs btn-primary btn-detail" title="Detail Data" href="{{url('campaign/preview') . '/' . $campaign->id}}">
+                                    <a class="btn btn-xs btn-primary btn-detail" title="Detail Data" href="{{url('user/') . '/' . $user->id}}">
                                         <i class="fa fa-eye"></i>   
                                     </a>
-                                    <a class="btn btn-xs btn-success btn-edit" title="Edit Data" href="{{url('campaign/').'/'.$campaign->id.('/edit')}}">
+                                    <a class="btn btn-xs btn-success btn-edit" title="Edit Data" href="{{url('user/').'/'.$user->id.('/edit')}}">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a class="btn btn-xs btn-warning btn-delete" title="Delete" href="javascript:;" onclick="">
@@ -120,24 +106,22 @@
             </div>
             <div class="col-md-8"></div>
             <div class="col-md-4" style="margin:30px 0;">
-                <span class="pull-right"><?php echo $campaigns->links(); ?></span></div>
+                <span class="pull-right"><?php echo $users->links(); ?></span></div>
             </div>
         </div>
     </section>
-
-
 @endsection
 
 @section('js_section')
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#table_campaign .btn-delete").click(function(){
+         $("#table_user .btn-delete").click(function(){
             if(confirm("Are you sure to delete the item?"))
             {
                 var id = $(this).parent().parent().parent().attr('rowid');
                 console.log(id);
                 $.ajax({
-                    url: '/campaign/' + id,
+                    url: '/user/' + id,
                     type: 'POST',
                     data: { _method : 'DELETE'
                     },
@@ -148,7 +132,6 @@
             }
         });
     });
-     
+   
 </script>
 @endsection
-

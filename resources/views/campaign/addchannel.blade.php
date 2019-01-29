@@ -28,7 +28,7 @@
 				            </label>
 						    <div class="col-sm-2">
 						    	<div class="input-group">
-							        <select class="select2 form-control notfocus" name="chan_name">
+							        <select class="select2 form-control notfocus" name="channel_id" id="ch_name">
 							        	@foreach($channels as $channel)
 							        		<option value="{{$channel->id}}">{{$channel->name}}</option>
 							        	@endforeach
@@ -43,9 +43,9 @@
 				            </label>
 						    <div class="col-sm-2">
 						    	<div class="input-group">
-							        <select class="select2 form-control notfocus" name="channel_id">
-							        	@foreach($subchannels as $channel)
-							        		<option value="{{$channel->id}}">{{$channel->name}}</option>
+							        <select class="select2 form-control notfocus" name="subchannel_id" id="subch_name">
+							        	@foreach($subchannels as $subchannel)
+							        		<option value="{{$subchannel->id}}">{{$subchannel->name}}</option>
 							        	@endforeach
 							        </select>
 							    </div>
@@ -55,7 +55,7 @@
 						</div>
 						
 						<div class="form-group header-group-0 " id="form-group-chairman" style="">
-	    					<label class="control-label col-sm-2">Chairman
+	    					<label class="control-label col-sm-2">Responsible
 	                    		<span class="text-danger" title="This field is required">*</span>
 				            </label>
 						    <div class="col-sm-10">
@@ -65,7 +65,7 @@
 						    </div>
 						</div>  
 
-						<div class="form-group header-group-0 " id="form-group-description" style="">
+						<div class="form-group header-group-0" id="form-group-description" style="">
 	    					<label class="control-label col-sm-2">Description
 	                    		<span class="text-danger" title="This field is required">*</span>
 				            </label>
@@ -74,82 +74,24 @@
 						        <div class="text-danger"></div>
 						        <p class="help-block"></p>
 						    </div>
+						</div>
+
+						<div class="form-group header-group-0 " id="form-group-description" style="">
+							<label class="control-label col-sm-2">Stage
+	                    		<span class="text-danger" title="This field is required">*</span>
+				            </label>
+				            <div class="col-sm-10">
+				            	<div class="input-group">
+				            	<select name="stage" class="select2  form-control">
+				            		<option value="1">Tease</option>
+				            		<option value="2">Live</option>
+				            		<option value="3">Sustain</option>
+				            		<option value="4">All</option>
+				            	</select>
+				            	</div>
+				            </div>
 						</div>  
 
-						<div class="form-group form-datepicker header-group-0 " id="form-group-tease_start" style="">
-	    					<label class="control-label col-sm-2">Tease Start
-	                    		<span class="text-danger" title="This field is required">*</span>
-	            			</label>
-						    <div class="col-sm-2">
-						        <div class="input-group">
-						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
-						            <input type="text" title="Tease Start" readonly="" required class="form-control notfocus input_date" name="tease_start" id="tease_start" value="">
-						        </div>
-						        <div class="text-danger"></div>
-						        <p class="help-block"></p>
-						    </div>
-						    <label class="control-label col-sm-2">Tease End
-			                    <span class="text-danger" title="This field is required">*</span>
-			            	</label>
-						    <div class="col-sm-2">
-						        <div class="input-group">
-						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
-						            <input type="text" title="Tease End" readonly="" required class="form-control notfocus input_date" name="tease_end" id="tease_end" value="">
-						        </div>
-						        <div class="text-danger"></div>
-						        <p class="help-block"></p>
-						    </div>
-						</div>
-	    
-	    				<div class="form-group form-datepicker header-group-0 " id="form-group-live_start" style="">
-						    <label class="control-label col-sm-2">Live Start
-	                    		<span class="text-danger" title="This field is required">*</span>
-				            </label>
-						    <div class="col-sm-2">
-						        <div class="input-group">
-						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
-						            <input type="text" title="Live Start" readonly="" required class="form-control notfocus input_date" name="live_start" id="live_start" value="">
-						        </div>
-						        <div class="text-danger"></div>
-						        <p class="help-block"></p>
-						    </div>
-						    <label class="control-label col-sm-2">Live End
-			                    <span class="text-danger" title="This field is required">*</span>
-			           	 	</label>
-						    <div class="col-sm-2">
-						        <div class="input-group">
-						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
-						            <input type="text" title="Live End" readonly="" required class="form-control notfocus input_date" name="live_end" id="live_end" value="">
-						        </div>
-						        <div class="text-danger"></div>
-						        <p class="help-block"></p>
-						    </div>
-						</div>
-	    
-	    				<div class="form-group form-datepicker header-group-0 " id="form-group-sustain_start" style="">
-	    					<label class="control-label col-sm-2">Sustain Start
-			                    <span class="text-danger" title="This field is required">*</span>
-				            </label>
-						    <div class="col-sm-2">
-						        <div class="input-group">
-						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
-						            <input type="text" title="Sustain Start" readonly="" required class="form-control notfocus input_date" name="sustain_start" id="sustain_start" value="">
-						        </div>
-						        <div class="text-danger"></div>
-						        <p class="help-block"></p>
-						    </div>
-						    <label class="control-label col-sm-2">Sustain End
-			                    <span class="text-danger" title="This field is required">*</span>
-				            </label>
-						    <div class="col-sm-2">
-						        <div class="input-group">
-						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
-						            <input type="text" title="Sustain End" readonly="" required class="form-control notfocus input_date" name="sustain_end" id="sustain_end" value="">
-						        </div>
-						        <div class="text-danger"></div>
-						        <p class="help-block"></p>
-						    </div>
-						</div>
             		</div><!-- /.box-body -->
 		            <div class="box-footer" style="background: #F5F5F5">
 		                <div class="form-group">
@@ -163,35 +105,38 @@
 				</form>
 
 				<div class="box-body table-responsive no-padding">
-                <table id="table_camp_channel" class="table table-hover table-striped table-bordered">
+				<div style="margin: 30px;">
+                <table id="table_camp_channel" class="table table-hover table-striped table-bordered" style="text-align: center;">
                     <thead>
                         <tr class="active">
-                            <th width="auto">Name &nbsp;</th>
-                            <th width="auto">Chairman &nbsp;</th>
-                            <th width="auto">Description &nbsp;</th>
-                            <th width="auto">Tease Start &nbsp;</th>
-                            <th width="auto">Tease End &nbsp;</th>
-                            <th width="auto">Live Start &nbsp;</th>
-                            <th width="auto">Live End &nbsp;</th>
-                            <th width="auto">Sustain Start &nbsp;</th>
-                            <th width="auto">Sustain End &nbsp;</th>
-                            <th width="auto" style="text-align:right">Action</th>
+                            <th>Campaign</th>
+                            <th>Channel</th>
+                            <th>SubChannel</th>
+                            <th>Responsible</th>
+                            <th>Description</th>
+                            <th>Stage</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($camp_channels as $ch)        
                         <tr rowid="{{$ch->id}}">
+                            <td>{{$ch->campaign->name}}</td>
                             <td>{{$ch->channel->name}}</td>
+                            <td>{{$ch->subchannel->name}}</td>
                             <td>{{$ch->chairman}}</td>
                             <td>{{$ch->description}}</td>
-                            <td>{{$ch->tease_start}}</td>
-                            <td>{{$ch->tease_end}}</td>
-                            <td>{{$ch->live_start}}</td>
-                            <td>{{$ch->live_end}}</td>
-                            <td>{{$ch->sustain_start}}</td>
-                            <td>{{$ch->sustain_end}}</td>
+                            @if($ch->stage == 1)
+                            <td>Tease</td>
+                            @elseif($ch->stage == 2)
+                            <td>Live</td>
+                            @elseif($ch->stage == 3)
+                            <td>Sustain</td>
+                            @elseif($ch->stage == 4)
+                            <td>All</td>
+                            @endif
                             <td>
-                                <div class="button_action" style="text-align:right">
+                                <div class="button_action">
                                     
                                     <a class="btn btn-xs btn-success btn-edit" title="Edit Data" href="{{url('campaign/channel/edit').'/'. $campaign_id . '/' . $ch->id}}">
                                         <i class="fa fa-pencil"></i>
@@ -207,6 +152,7 @@
                     </tbody>
                     
                 </table>
+                </div>
             </div>
         </div>
 			</div>
@@ -217,4 +163,70 @@
 </section>
 
 
+@endsection
+
+@section('js_section')
+<script type="text/javascript">
+   $(document).ready(function(){
+   		var firstch_id = $("#ch_name").val()
+   		console.log(firstch_id);
+   		$.ajax({
+            url: '/campaign/channel/assign/' + firstch_id,
+            //datatype:'json',
+            type: 'get',
+            data: { id : firstch_id
+            },
+            datatype: 'json',
+            success: function(response) {
+                //console.log(response);
+                //console.log(response);
+                var subchannels = JSON.parse(response);
+                //console.log(subchannels);
+                var ids = new Array();
+                var names = new Array();
+                var content = "";
+                for(var i = 0; i < subchannels.length; i++)
+                {
+                    ids[i] = subchannels[i].id;
+                    names[i] = subchannels[i].name;
+                    content += "<option value='" + ids[i] + "'>" + names[i] + "</option>";
+                }
+
+                $("#subch_name").html(content);
+            }
+            });
+
+        $("#ch_name").change(function(){
+            var ch_id = $(this).val();
+            //console.log(ch_id);
+            $.ajax({
+                    url: '/campaign/channel/assign/' + ch_id,
+                    //datatype:'json',
+                    type: 'get',
+                    data: { id : ch_id
+                    },
+                    datatype: 'json',
+                    success: function(response) {
+                        //console.log(response);
+                        //console.log(response);
+                        var subchannels = JSON.parse(response);
+                        console.log(subchannels);
+                        var ids = new Array();
+                        var names = new Array();
+                        var content = "";
+                        for(var i = 0; i < subchannels.length; i++)
+                        {
+                            ids[i] = subchannels[i].id;
+                            names[i] = subchannels[i].name;
+                            content += "<option value='" + ids[i] + "'>" + names[i] + "</option>";
+                        }
+
+                        $("#subch_name").html(content);
+                    }
+            });
+        });
+
+    });
+   
+</script>
 @endsection

@@ -11,7 +11,7 @@
 <section id="content_section" class="content">            
     <div>
 		<p><a title="Return" href="{{url('/campaign')}}"><i class="fa fa-chevron-circle-left "></i>
-                        &nbsp; Back To List Data Campaign</a></p>            
+                        &nbsp; Back To List Campaign</a></p>            
         <div class="panel panel-default">
             <div class="panel-heading">
                 <strong><i class="fa fa-glass"></i> </strong>
@@ -47,7 +47,7 @@
 	    					<label class="control-label col-sm-2">Tease Start
 	                    		<span class="text-danger" title="This field is required">*</span>
 	            			</label>
-						    <div class="col-sm-10">
+						    <div class="col-sm-2">
 						        <div class="input-group">
 						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
 						            <input type="text" title="Tease Start" readonly="" required="" class="form-control notfocus input_date" name="tease_start" id="tease_start" value="{{$campaign->tease_start}}">
@@ -55,13 +55,10 @@
 						        <div class="text-danger"></div>
 						        <p class="help-block"></p>
 						    </div>
-						</div>
-	    
-	    				<div class="form-group form-datepicker header-group-0 " id="form-group-tease_end" style="">
 						    <label class="control-label col-sm-2">Tease End
 			                    <span class="text-danger" title="This field is required">*</span>
 			            	</label>
-						    <div class="col-sm-10">
+						    <div class="col-sm-2">
 						        <div class="input-group">
 						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
 						            <input type="text" title="Tease End" readonly="" required="" class="form-control notfocus input_date" name="tease_end" id="tease_end" value="{{$campaign->tease_end}}">
@@ -75,7 +72,7 @@
 						    <label class="control-label col-sm-2">Live Start
 	                    		<span class="text-danger" title="This field is required">*</span>
 				            </label>
-						    <div class="col-sm-10">
+						    <div class="col-sm-2">
 						        <div class="input-group">
 						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
 						            <input type="text" title="Live Start" readonly="" required="" class="form-control notfocus input_date" name="live_start" id="live_start" value="{{$campaign->live_start}}">
@@ -83,13 +80,10 @@
 						        <div class="text-danger"></div>
 						        <p class="help-block"></p>
 						    </div>
-						</div>
-	    
-						<div class="form-group form-datepicker header-group-0 " id="form-group-live_end" style="">
 						    <label class="control-label col-sm-2">Live End
 			                    <span class="text-danger" title="This field is required">*</span>
 			           	 	</label>
-						    <div class="col-sm-10">
+						    <div class="col-sm-2">
 						        <div class="input-group">
 						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
 						            <input type="text" title="Live End" readonly="" required="" class="form-control notfocus input_date" name="live_end" id="live_end" value="{{$campaign->live_end}}">
@@ -103,7 +97,7 @@
 	    					<label class="control-label col-sm-2">Sustain Start
 			                    <span class="text-danger" title="This field is required">*</span>
 				            </label>
-						    <div class="col-sm-10">
+						    <div class="col-sm-2">
 						        <div class="input-group">
 						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
 						            <input type="text" title="Sustain Start" readonly="" required="" class="form-control notfocus input_date" name="sustain_start" id="sustain_start" value="{{$campaign->sustain_start}}">
@@ -111,13 +105,10 @@
 						        <div class="text-danger"></div>
 						        <p class="help-block"></p>
 						    </div>
-						</div>
-	    
-	    				<div class="form-group form-datepicker header-group-0 " id="form-group-sustain_end" style="">
 						    <label class="control-label col-sm-2">Sustain End
 			                    <span class="text-danger" title="This field is required">*</span>
 				            </label>
-						    <div class="col-sm-10">
+						    <div class="col-sm-2">
 						        <div class="input-group">
 						            <span class="input-group-addon open-datetimepicker"><a><i class="fa fa-calendar "></i></a></span>
 						            <input type="text" title="Sustain End" readonly="" required="" class="form-control notfocus input_date" name="sustain_end" id="sustain_end" value="{{$campaign->sustain_end}}">
