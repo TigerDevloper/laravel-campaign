@@ -10,14 +10,6 @@ Run `php artisan serve` for a dev server. Navigate to `http://localhost:8080/`. 
 
 Run `php artisan make:controller controller-name ` to generate a new controller. You can also use `php artisan make:auth|command|controller|model|resource|test|...`.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Laravel 5.7, go check out the [PHP Framework For Web Artisans](https://laravel.com/docs/5.7).
